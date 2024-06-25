@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration strict="true" status="OFF" monitorInterval="30">
+    <appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{HH:mm:ss} %m%n"/>
+        </Console>
+
+        <File name="ERRORLOG" fileName="error-log.log">
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{HH:mm:ss} %m%n %ex"/>
+        </File>
+    </appenders>
+
+    <loggers>
+        <!-- Define your loggers here -->
+        <logger name="org.opensharding.oscm" level="INFO"/>
+        <logger name="com.dbshards.jdbc" level="INFO"/>
+        <logger name="com.dbshards.core.plugins.StatsPlugin" level="DEBUG"/>
+
+        <!-- Root Logger -->
+        <root level="info">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="ERRORLOG"/>
+        </root>
+    </loggers>
+</configuration>
+
